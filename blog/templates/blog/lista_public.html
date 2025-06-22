@@ -1,67 +1,67 @@
- {% load static %}
- <html>
+<html>
 <head>
-        
-    <title>Blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-	<style>
-        .filtro-usuarios {
-            margin: 15px 0;
-            padding: 10px;
-            background: #f0f0f0;
-        }
-        .usuario-filtro {
-            display: inline-block;
-            margin-right: 10px;
-            padding: 5px 10px;
-            background: #e0e0e0;
-            border-radius: 3px;
-        }
-        .usuario-filtro.activo {
-            background: #4CAF50;
-            color: blue;
-        }
-        .limpiar-filtro {
-            display: inline-block;
-            margin-left: 10px;
-            color: #666;
-        }
-    </style>
+    <title>El Mundo de Harry Potter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 </head>
-<body>
-	<div style="background: red;">
-    	<h1><a href="/">Blog</a></h1>
-    </div>
-	<!-- Filtro por usuario usando enlaces -->
-	<div class="filtro-usuarios">
-	<strong>Filtrar por autor:</strong>
-	
-	<!-- Opción "Todos" -->
-	<a href="?" class="usuario-filtro {% if not usuario_activo %}activo{% endif %}">
-		Todos
-	</a>
-	
-	<!-- Opciones por usuario -->
-	{% for usuario in usuarios %}
-		<a href="?usuario={{ usuario.id }}" 
-		   class="usuario-filtro {% if usuario_activo == usuario.id %}activo{% endif %}">
-			{{ usuario.username }}
-		</a>
-	{% endfor %}
-   </div>
 
-   <!-- Lista de publicaciones -->
+<body style="margin: 0; 
+             height: 100vh; 
+             background-image: url('https://wallpaperaccess.com/full/891225.jpg'); 
+             background-size: cover; 
+             background-position: center; 
+             background-repeat: no-repeat;
+             font-family: 'Delicious Handrawn', cursive;
+             color: white;
+             text-align: center;
+             padding-top: 20px;">
 
-   <div>
-	{% for publicacion in publicaciones %} 
-	<p>Publicado: {{ publicacion.fecha_publicacion }} por autor/a: {{ publicacion.autor.username }} </p>
-	<h2> <a href=""> {{publicacion.titulo}} </a> </h2>
-	<p> {{ publicacion.texto|linebreaksbr }} </p>
-	<hr>	
-	{% endfor %}
-   </div>
+    <div style="padding: 7px 7px; 
+                border-radius: 5px; 
+                font-size: 32px;
+                font-family: 'Delicious Handrawn', cursive;">
+        <h1><a href="/" style="color: white; text-decoration: none;">Harry Potter</a></h1>
+    </div>
+
+   <div style="max-width: 600px; 
+   margin: 0 auto; 
+   font-size: 18px; 
+   text-align: left;">
+
+        {% for publicacion in publicaciones %} 
+            <p style="font-family: 'Inconsolata', Black 900;margin-bottom: 3px; margin-top: 0;">
+                Publicado: {{ introduccion.fecha_publicacion }} por autor/a: {{ introduccion.autor.username }} 
+            </p>
+
+            <h2 style="font-family: 'Delicious Handrawn', cursive;margin-top: 0; margin-bottom: 10px;">
+                <a href="" style="color: white; text-decoration: none;">{{ introduccion.titulo }}</a>
+            </h2>
+            
+            <p style="font-family: 'Inconsolata', Black 900;">
+                {{ introduccion.texto|linebreaksbr }}
+            </p>
+
+            <hr style="border-color: white;">
+        
+        
+            <p style="font-family: 'Inconsolata', Black 900;margin-bottom: 3px; margin-top: 0;">
+                Publicado: {{ saga_de_libros.fecha_publicacion }} por autor/a: {{ saga_de_libros.autor.username }} 
+            </p>
+
+            <h2 style="font-family: 'Delicious Handrawn', cursive;margin-top: 0; margin-bottom: 10px;">
+                <a href="" style="color: white; text-decoration: none;">{{ saga_de_libros.titulo }}</a>
+            </h2>
+
+            <img src="https://e1.pxfuel.com/desktop-wallpaper/706/659/desktop-wallpaper-more-beautiful-j-k-rowling-j-k-rowling.jpg" 
+            alt="Jk - Roaling" 
+            style="width: 30%; max-width: 500px; border-radius: 30px; margin-top: 10px;">
+            
+            <p style="font-family: 'Inconsolata', Black 900;">
+                {{ saga_de_libros.texto|linebreaksbr }}
+            </p>
+
+            <hr style="border-color: white;">
+        {% endfor %}
+    </div>
 </body>
 </html>

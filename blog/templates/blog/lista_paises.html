@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+<head>
+   <title>Turismo de America</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/paises.css' %}">
+</head>
+
+<body>
+    
+    <div class="decoracion-izq"></div>
+
+    <div class="contenido-central">
+        <h1> Paises de America del Sur</h1>
+        <h2> Guia de Turismo </h2>
+        
+        <div class="contenedor-pais">
+            {% for pais in paises %}
+            <div class="pais">
+                <h3>{{ pais.titulo }}</h3>
+                <a href="{% url 'detalle_pais' pais.pk %}">
+                    <img src="{{ pais.imagen.url }}" alt="{{ pais.titulo }}">
+                </a>
+            </div>
+            {% empty %}
+            <p>No hay paises para mostrar.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="decoracion-der"></div>
+ 
+</body>
+</html>

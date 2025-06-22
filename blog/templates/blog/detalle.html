@@ -1,0 +1,70 @@
+{% load static %}
+
+<html>
+<head>
+   <title>Turismo de America</title>
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+   <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+   
+   <link rel="stylesheet" href="{% static 'css/detalle.css' %}">
+</head>
+
+<body>
+
+  <div class="titulo-banderas">
+    <img src="{{ pais.imagen.url }}" alt="Bandera de {{ pais.titulo }}" class="bandera">
+    <h1>{{ pais.titulo }}</h1>
+    <img src="{{ pais.imagen.url }}" alt="Bandera de {{ pais.titulo }}" class="bandera">
+  </div>
+
+  <div class="tres-columnas">
+
+    <div class="columna">
+      <h3>Datos importantes</h3>
+      <div class="diferentes-campos">
+        <p>Capital: {{ pais.cuidades_imp }}</p>
+        <p>Cantidad de habitantes: {{ pais.cantidades_hab }}</p>
+        <p>Idioma: {{ pais.idi }}</p>
+        <p>Moneda: {{ pais.moneda }}</p>
+        <p>Superficie terrestre: {{ pais.superficie }}</p>
+      </div>
+    </div>
+    
+    <div class="columna">
+      <h3>Culturas y tradiciones</h3>
+      <p>{{ pais.texto }}</p>
+    </div>
+    
+    <div class="columna">
+      <h3>Lugares más turísticos</h3>
+      <p>{{ pais.lugares_tur|linebreaksbr }}</p>
+    </div>
+  </div>
+
+  <div class="imagenes-turismo">
+    <div class="imagenes">
+      <img src="{{ pais.imagenes_lug1.url }}" alt="Lugar de {{ pais.titulo }}" class="lug">
+    </div>
+    <div class="imagenes">
+      <img src="{{ pais.imagenes_lug2.url }}" alt="Lugar de {{ pais.titulo }}" class="lug">
+    </div>
+    <div class="imagenes">
+      <img src="{{ pais.imagenes_lug3.url }}" alt="Lugar de {{ pais.titulo }}" class="lug">
+    </div>
+  </div>
+
+  <div class="informacion">
+    <h4>Informacion sobre la pagina:</h4>
+    <p><strong>Autor: {{ pais.autor }}</strong></p>
+    <p><strong>Fecha de publicación: {{ pais.fecha_publicacion }}</strong></p>
+  </div>
+
+
+
+</body>
+
+</html>
